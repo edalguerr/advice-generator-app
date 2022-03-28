@@ -83,6 +83,10 @@
     background: var(--neon-green);
 }
 
+.card-advice-button-generator:hover {
+    box-shadow: 0px 0px 30px 1px var(--neon-green);
+}
+
 .card-advice-button-generator__icon {
     display: block;
     transform: scale(0.75);
