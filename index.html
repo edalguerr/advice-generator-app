@@ -16,18 +16,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="app-container">
 
   <main class="main-container">
     <div class="card-advice">
       <h3 class="card-advice__advice-id">Advice #173</h3>
 
-      <p class="card-advice__advice">
+      <p class="card-advice__advice-text">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium fugit facilis quisquam sequi inventore atque quasi qui voluptatem ut dolor, ratione sunt harum sed praesentium mollitia repudiandae cum ad in?
       </p>
 
       <picture>
-        <source media="(max-width: 1439px)" srcset="./images/pattern-divider-mobile.svg">
+        <source media="(max-width: 1000px)" srcset="./images/pattern-divider-mobile.svg">
         <img src="./images/pattern-divider-desktop.svg" alt="Pattern divider" class="card-advice__divider">
       </picture>
 
@@ -37,10 +37,16 @@
     </div>
   </main>
   
-  <footer>
+  <footer class="attribution-container">
     <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
+      Challenge by 
+      <a href="https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db" 
+        target="_blank" 
+        class="attribution__link">
+        Frontend Mentor
+      </a>. 
+      Coded by 
+      <a href="https://github.com/edalguerr" class="attribution__link">@edalguerr</a>.
     </div>
   </footer>
 </body>
