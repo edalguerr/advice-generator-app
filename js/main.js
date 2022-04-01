@@ -1,7 +1,11 @@
 let speechSynthesis;
 let speechSynthesisUtterance;
+let voices;
 let voiceDefault;
+
 let request;
+let adviceRes;
+
 let adviceIdTitle;
 let adviceText;
 
@@ -27,11 +31,22 @@ function initializeHttp() {
 function intializeSpeechSynthesis(){
     speechSynthesis = window.speechSynthesis;
     
-    let voices = speechSynthesis.getVoices();
+    voices = speechSynthesis.getVoices();
     
     voiceDefault = voices.find((voice) => {
-        return voice.lang.includes("en");
+        return (voice.lang == "en-US" || voice.lang == "en_US");
     });
+
+    /* support for chrome, opera */
+    speechSynthesis.addEventListener("voiceschanged", () => {
+        voices = speechSynthesis.getVoices()
+    
+        voiceDefault = voices.find((voice) => {
+            return (voice.lang == "en-US" || voice.lang == "en_US");
+        });
+    
+    })
+
 }
 
 
@@ -46,11 +61,11 @@ function getAdvice() {
 function requestDone(aEvt) {
     if (request.readyState == 4) {
         if(request.status == 200) {
-            let advice = JSON.parse(request.responseText).slip;
-            adviceIdTitle.innerHTML = 'Advice #'+ advice.id;
-            adviceText.innerHTML = '“'+ advice.advice +'”';        
+            adviceRes = JSON.parse(request.responseText).slip;
+            adviceIdTitle.innerHTML = 'Advice #'+ adviceRes.id;
+            adviceText.innerHTML = '“'+ adviceRes.advice +'”';        
             
-            readAdvice({id: advice.id, text: advice.advice});
+            readAdvice({id: adviceRes.id, text: adviceRes.advice});
         } else {
             console.log("Error loading page\n");
         }        
@@ -66,7 +81,7 @@ function random(min, max) {
 function readAdvice(advice){
     speechSynthesisUtterance = new SpeechSynthesisUtterance("Advice "+advice.id+". "+advice.text);
     speechSynthesisUtterance.voice = voiceDefault;
-    alert(voiceDefault.name)
+    
     /* speechSynthesisUtterance.pitch and speechSynthesisUtterance.rate representing a float value.
     It can range between 0 (lowest) and 2 (highest), with 1 being the default pitch and rate */
     speechSynthesisUtterance.pitch = 1.3;
