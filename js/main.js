@@ -30,7 +30,7 @@ function intializeSpeechSynthesis(){
     let voices = speechSynthesis.getVoices();
     
     voiceDefault = voices.find((voice) => {
-        return voice.lang == "en-US";
+        return (voice.lang == "en-US" || voice.lang == "en_US");
     });
 }
 
@@ -66,10 +66,10 @@ function random(min, max) {
 function readAdvice(advice){
     speechSynthesisUtterance = new SpeechSynthesisUtterance("Advice "+advice.id+". "+advice.text);
     speechSynthesisUtterance.voice = voiceDefault;
-
+    
     /* speechSynthesisUtterance.pitch and speechSynthesisUtterance.rate representing a float value.
     It can range between 0 (lowest) and 2 (highest), with 1 being the default pitch and rate */
-    speechSynthesisUtterance.pitch = 1.7;
+    speechSynthesisUtterance.pitch = 1.3;
     speechSynthesisUtterance.rate = 0.9;
 
     speechSynthesis.speak(speechSynthesisUtterance);
