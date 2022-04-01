@@ -66,7 +66,7 @@ function random(min, max) {
 function readAdvice(advice){
     speechSynthesisUtterance = new SpeechSynthesisUtterance("Advice "+advice.id+". "+advice.text);
     speechSynthesisUtterance.voice = voiceDefault;
-    
+    alert(voiceDefault.name)
     /* speechSynthesisUtterance.pitch and speechSynthesisUtterance.rate representing a float value.
     It can range between 0 (lowest) and 2 (highest), with 1 being the default pitch and rate */
     speechSynthesisUtterance.pitch = 1.3;
