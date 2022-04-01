@@ -30,7 +30,7 @@ function intializeSpeechSynthesis(){
     let voices = speechSynthesis.getVoices();
     
     voiceDefault = voices.find((voice) => {
-        return (voice.lang == "en-US" || voice.lang == "en_US");
+        return voice.lang.includes("en");
     });
 }
 
